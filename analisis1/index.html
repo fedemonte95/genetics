@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+ 
+<html lang="es">
+ 
+<head>
+	<title>ANALISIS DE ALGORITMOS</title>
+	<meta charset="utf-8" />
+	
+	<!-- Latest version Jquery -->
+	<script src="js/jquery-2.1.3.js"></script>
+	
+	<!-- Latest compiled and minified bootstrap'CSS -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+
+	<!-- Optional bootstrap'theme -->
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+
+	<!-- biblioteca para lectura de archivos-->
+	<link rel="stylesheet" type="text/css" href="css/fileinput.min.css" />
+ 	<script type="text/javascript" src="js/fileinput.min.js"></script>
+	
+	<!-- biblioteca para scroll-->
+ 	<script type="text/javascript" src="js/jquery.nicescroll.min.js"></script>
+	
+	<!-- Hoja Estilos Pagina Principal -->
+	<link rel="stylesheet" href="estilos.css" />
+	
+	<!-- Codigo fuente JavaScript Proyecto ISAAC CAMPOS -->
+	<script src="codigoJavaScript.js"></script>
+	
+</head>
+ 
+<header class="height-50">
+	<h1>PRIMER PROYECTO PROGRAMADO ANALISIS DE ALGORITMOS <br>
+		Programación Genetica
+    </h1>
+</header>
+	
+<body>
+	<img id="background"></img>
+	<section id="sec_principal">
+		<div class="ventana_principal opacity0">
+			<form class="cont_input" enctype="multipart/form-data">
+				<div class="inputs">
+					<div class="row">
+						<div class="file_input col-md-4">
+							<div class="col-md-12">
+								<input class="problema" name="problema" type="file"> 
+							</div>
+							<div class="col-md-12">
+								<input class="datos" name="datos" type="file"> 
+							</div>
+							<div class="col-md-12">
+								<input class="salida" name="salida" type="file"> 
+							</div>
+						</div>
+	<!--
+						<div class="input-cuadros">
+							<label class="etiqueta" for="cantRectangulos">Rectangulos =</label>
+
+							<input class="textbox" id="cantRectangulos" type="number" min="0"> 
+						</div>
+	-->
+
+						<div class="botones col-md-4">
+							<div class="row">
+		<!--
+								<label for="direccionIz" class="boton">
+									<input type="checkbox" class="opcionDireccion" name="opcion" id="direccionIz" checked value="1">Izquierda
+								</label>
+								<label for="direccionDe" class="boton">
+									<input type="checkbox" class="opcionDireccion" name="opcion" id="direccionDe" value="1">Cantidad de Generaciones
+								</label>
+		-->
+								<label class="etiqueta col-md-6" for="generaciones">Cantidad de generaciones</label>
+								<input class="textbox col-md-6" id="generaciones" type="number" min="0">
+
+								<label class="etiqueta col-md-6" for="poblacion">Tamaño de la población</label>
+								<input class="textbox col-md-6" id="poblacion" type="number" min="0">
+
+								<label class="etiqueta col-md-6" for="mutacion">Nivel de mutación</label>
+								<input class="textbox col-md-6" id="mutacion" type="number" min="0" max="1" step="0.1">
+							</div>
+						</div>
+						
+						<div class="botones col-md-4">
+							<div class="row">
+								<select class="textbox col-md-12" id="seleccion">
+									<option value="" selected>Selección de padres</option>
+									<option value="0">Simple al azar</option>
+									<option value="1">Rueda de la fortuna</option>
+									<option value="2">Torneo</option>
+								</select>
+								
+								<input class="boton col-md-12" id="boton-graficar" type="button" value=">" onClick="iniciar();"> 
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</form>
+			
+			<div class="cont_grafico">
+				<div class="campo_grafico">
+					<img class="bg gray">
+					<div class="row height-100">
+						<div class="col-md-12 height-100">
+							<h2>RESULTADOS</h2>
+							<pre id="resultados"></pre>
+							<img class="bg-loading" style="display: none;">
+						 </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+
+<footer  class="height-50">
+	<h1>2015 &copy;  Creado por ISAAC CAMPOS MESÉN </h1>
+</footer>
+
+</html>
