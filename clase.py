@@ -1,5 +1,6 @@
 import abc
 from abc import ABCMeta
+import random
 from random import randint
 
 
@@ -11,6 +12,9 @@ global arcos
 global boolarcos
 arcos = ''
 boolarcos = ''
+
+random.seed()
+
 class problema:
     __metaclass__ = ABCMeta
     
@@ -74,7 +78,6 @@ class problema:
         i = 0 
         if (self.pMutacion >=randint(1,100)):
             pos = randint(0,(len(phijo)-1))
-            print('Mutar')
             while(i< len(phijo)):
                 if(i==pos):
                     if (phijo[i]=='0'):
@@ -90,8 +93,7 @@ class problema:
             gen = phijo
         print('Gen')
         print(gen)
-    def cruces(self, padreA, padreB ):
-        cantPuntos = 1
+    def cruces(self, padreA, padreB, cantPuntos ):
         punto = 0
         hijoA=''
         hijoB=''
@@ -112,6 +114,13 @@ class problema:
     def seleccionAzar(self, poblacion):
         azar = poblacion[randint(0, len(poblacion)-1)]
         return(azar)
+    def seleccionTorneo(self, poblacion):
+        torneo = sorted(poblacion)
+        return (torneo[-1])
+    def seleccionRuleta(self, poblacion):
+        poblacionSorted = sorted(poblacion)
+        ruleta = poblacionSorted[randint(len(poblacion)//2, len(poblacion)-1)]
+        return(ruleta)
         
 
 class Algoritmo(problema):
@@ -209,12 +218,27 @@ problem.readProblema(NameFile)
 problem.geneSize()
 algoritmo = Algoritmo(politica,numCruces,mutacion,tamanoPoblacion)
 pobla = algoritmo.resetPoblacion(100)
-padreA = algoritmo.seleccionAzar(pobla)
-padreB = algoritmo.seleccionAzar(pobla)
-a,b = algoritmo.cruces(padreA, padreB)
+
+if (politica == 1):
+    padreA = algoritmo.seleccionAzar(pobla)
+    padreB = algoritmo.seleccionAzar(pobla)
+    
+elif (politica == 2):
+    padreA = algoritmo.seleccionTorneo(pobla)
+    padreB = algoritmo.seleccionTorneo(pobla)
+    
+elif (politica == 3):
+    padreA = algoritmo.seleccionRuleta(pobla)
+    padreB = algoritmo.seleccionRuleta(pobla)
+
+a,b = algoritmo.cruces(padreA, padreB, numCruces)
 algoritmo.mutar(a)
-fitn = algoritmo.fitness(b)
-fitn = algoritmo.fitness(b)
+fitna = algoritmo.fitness(a)
+fitnb = algoritmo.fitness(b)
+
+print("\nFitness A = " + str (fitna) + ("\n\n"))
+print("\nFitness A = " + str (fitnb) + ("\n\n"))
+
 boolfitness = [0]*len(pobla)
 i = 0
 while(i<len(boolfitness)):
