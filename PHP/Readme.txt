@@ -1,1 +1,0 @@
-Para poder visualizar el programa hecho en PHO, se debe abrir con algun navegador web (preferiblemente FireFox) el archivo index.html y corriendo algun servidor local
