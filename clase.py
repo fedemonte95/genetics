@@ -23,7 +23,7 @@ class problema:
         global archivo
         global nombre
         archivo = open(pNameFile,'r')
-        nombre= archivo.readline()
+        nombre = archivo.readline()
     def geneSize(self):
         global linea
         '''tamaño del gen'''
@@ -34,7 +34,7 @@ class problema:
         aristas = linea[1]
         recubrimiento = linea[2]
         print (genSize)
-    def fitness(self, gen):
+    def fitnessGT1(self, gen):
         '''Calculo del fitness'''
         i = 0
         global arco
@@ -68,7 +68,14 @@ class problema:
             i += 1
         valFitness = cantCeros;
         return(valFitness)
-                                
+
+    def fitnessSP5(self, gen):
+        result = 0
+        for i in range(len(gen)):
+            if(gen[i] == '1'):
+                result = result + 1
+        return (result)
+
     def name(self):
         '''Nombre del problema'''
         print (nombre)
@@ -233,16 +240,26 @@ elif (politica == 3):
 
 a,b = algoritmo.cruces(padreA, padreB, numCruces)
 algoritmo.mutar(a)
-fitna = algoritmo.fitness(a)
-fitnb = algoritmo.fitness(b)
+
+if (nombre == "GT1"):
+    fitna = algoritmo.fitnessGT1(a)
+    fitnb = algoritmo.fitnessGT1(b)
+else:
+    fitna = algoritmo.fitnessSP5(a)
+    fitnb = algoritmo.fitnessSP5(b)
 
 print("\nFitness A = " + str (fitna) + ("\n\n"))
-print("\nFitness A = " + str (fitnb) + ("\n\n"))
+print("\nFitness B = " + str (fitnb) + ("\n\n"))
 
 boolfitness = [0]*len(pobla)
 i = 0
-while(i<len(boolfitness)):
-    boolfitness[i]= algoritmo.fitness(pobla[i])
-    i +=1
+if (nombre == "GT1"):
+    while(i<len(boolfitness)):
+        boolfitness[i]= algoritmo.fitnessGT1(pobla[i])
+        i +=1
+else:
+    while(i<len(boolfitness)):
+        boolfitness[i]= algoritmo.fitnessSP5(pobla[i])
+        i +=1
 print(boolfitness)
 algoritmo.getBest(boolfitness)
