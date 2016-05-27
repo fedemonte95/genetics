@@ -122,7 +122,8 @@ class problema:
         azar = poblacion[randint(0, len(poblacion)-1)]
         return(azar)
     def seleccionTorneo(self, poblacion):
-        torneo = sorted(poblacion)
+        sample = sample(poblacion, randint(0, len(poblacion)))
+        torneo = sorted(sample)
         return (torneo[-1])
     def seleccionRuleta(self, poblacion):
         poblacionSorted = sorted(poblacion)
@@ -177,42 +178,6 @@ class Algoritmo(problema):
                 best = boolfitness[i]
             i += 1
         print(best)
-
-'''
-NameFile = input(str("Digite el nombre del archivo: "))
-NameFile += ".txt"
-problem = problema()
-problem.readProblema(NameFile)
-problem.name()
-problem.geneSize()
-algo = Algoritmo(1,1,5,100)
-pobla = algo.resetPoblacion(100)
-print(pobla)
-print('azarUno')
-padreA = algo.seleccionAzar(pobla)
-print(padreA)
-print('azarDos')
-padreB = algo.seleccionAzar(pobla)
-print(padreB)
-print('hijos')
-a,b = algo.cruces(padreA, padreB)
-print(a)
-print(b)
-algo.mutar(a)
-fitn = algo.fitness(a)
-print('A')
-print(fitn)
-fitn = algo.fitness(b)
-print('B')
-print(fitn)
-boolfitness = [0]*len(pobla)
-i = 0
-while(i<len(boolfitness)):
-    boolfitness[i]= algo.fitness(pobla[i])
-    i +=1
-print(boolfitness)
-algo.getBest(boolfitness)
-'''
 
 NameFile = input(str("Digite el nombre del archivo: "))
 politica = int(input("Digite la politica: "))
